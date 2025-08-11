@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Special Offers — FreshOcean</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+
+{% include 'partials/header.html' %}
+
+<header class="hero">
+  <div class="container">
+    <h1>Promotions</h1>
+    <p class="lead">Discover our latest deals on premium seafood.</p>
+  </div>
+</header>
+
+<main class="section container">
+  <div class="cards">
+    <article class="card">
+      <img src="{{ url_for('static', filename='assets/promo-lobster.jpg') }}" alt="Lobster">
+      <div class="body">
+        <h3>Lobster Discount</h3>
+        <p class="subtle">Save big on whole lobster this week.</p>
+        <a class="btn" href="{{ url_for('products') }}#shellfish">Shop Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="{{ url_for('static', filename='assets/promo-salmon.jpg') }}" alt="Salmon sale">
+      <div class="body">
+        <h3>Salmon Sale</h3>
+        <p class="subtle">Fillets and portions at special prices.</p>
+        <a class="btn" href="{{ url_for('products') }}#salmon">Shop Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="{{ url_for('static', filename='assets/promo-shrimp.jpg') }}" alt="Shrimp">
+      <div class="body">
+        <h3>Shrimp Offer</h3>
+        <p class="subtle">King prawns—perfect for grilling or pasta.</p>
+        <a class="btn" href="{{ url_for('products') }}#shellfish">Shop Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="{{ url_for('static', filename='assets/promo-cod.jpg') }}" alt="Cod special">
+      <div class="body">
+        <h3>Cod Special</h3>
+        <p class="subtle">Lean, flaky cod loins at a great price.</p>
+        <a class="btn" href="{{ url_for('products') }}#fish">Shop Now</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="feature" style="margin-top:24px">
+    <p><strong>Bonus:</strong> Save <strong>20%</strong> on curated seasonal items and enjoy <strong>Free Delivery</strong> on orders over £100.</p>
+  </div>
+</main>
+
+{% include 'partials/footer.html' %}
+
+</body>
+</html>

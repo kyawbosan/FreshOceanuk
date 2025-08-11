@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products — FreshOcean</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+
+{% include 'partials/header.html' %}
+
+<header class="hero">
+  <div class="container">
+    <h1>Our Products</h1>
+    <p class="lead">Premium, sustainably sourced seafood delivered fresh to your business or home.</p>
+  </div>
+</header>
+
+<main class="section container">
+  <div class="product-grid">
+    {% for product in [
+      {'name':'King Crab','img':'king-crab.jpg','price':'From £36.00/kg','anchor':'crab'},
+      {'name':'Lobster','img':'lobster.jpg','price':'From £48.00/kg','anchor':'lobster'},
+      {'name':'Shrimp','img':'shrimp.jpg','price':'From £15.00/kg','anchor':'shrimp'},
+      {'name':'Salmon','img':'salmon.jpg','price':'From £19.90/kg','anchor':'salmon'},
+      {'name':'Tuna','img':'tuna.jpg','price':'From £24.00/kg','anchor':'tuna'},
+      {'name':'Scallops','img':'scallops.jpg','price':'From £22.00/kg','anchor':'scallops'},
+      {'name':'Mussels','img':'mussels.jpg','price':'From £8.50/kg','anchor':'mussels'}
+    ] %}
+    <article class="product-card" id="{{ product.anchor }}">
+      <img src="{{ url_for('static', filename='assets/' + product.img) }}" alt="{{ product.name }}">
+      <div class="content">
+        <h3>{{ product.name }}</h3>
+        <p class="price">{{ product.price }}</p>
+        <a class="btn btn-outline" href="#">Order Now</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</main>
+
+{% include 'partials/footer.html' %}
+
+</body>
+</html>

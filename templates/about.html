@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us — FreshOcean</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+
+{% include 'partials/header.html' %}
+
+<header class="hero">
+  <div class="container">
+    <h1>About FreshOcean</h1>
+    <p class="lead">A trusted exporter & importer of premium seafood—serving wholesale, retail, and foodservice customers worldwide.</p>
+  </div>
+</header>
+
+<main class="section container">
+  <div class="split">
+    <div>
+      <h2>Our Story</h2>
+      <p>We built FreshOcean on one promise: deliver exceptional seafood, consistently. With experienced sourcing teams and strict cold‑chain controls, we keep freshness and flavour at their peak from dock to door.</p>
+      <a class="btn" href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+    <img src="{{ url_for('static', filename='assets/about-hero.jpg') }}" alt="Selection of premium seafood">
+  </div>
+
+  <div class="grid-3" style="margin-top:30px">
+    <div class="feature"><h3>Sustainability</h3><p class="subtle">We partner with responsible fisheries and farms to protect marine ecosystems.</p></div>
+    <div class="feature"><h3>Quality Assurance</h3><p class="subtle">Stringent inspections and lot-level traceability ensure safety and taste.</p></div>
+    <div class="feature"><h3>Global Reach</h3><p class="subtle">A reliable logistics network enables fast, temperature‑controlled delivery.</p></div>
+  </div>
+</main>
+
+{% include 'partials/footer.html' %}
+
+</body>
+</html>

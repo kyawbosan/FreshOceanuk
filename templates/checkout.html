@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — FreshOcean</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+
+{% include 'partials/header.html' %}
+
+<header class="hero">
+  <div class="container"><h1>Checkout</h1></div>
+</header>
+
+<main class="section container split">
+  <form class="form feature" onsubmit="window.location='{{ url_for('thank_you') }}'; return false;">
+    <h2>Contact Information</h2>
+    <label>Email Address<input type="email" required></label>
+    <label>Phone Number<input type="tel"></label>
+
+    <h2>Shipping Address</h2>
+    <label>Full Name<input required></label>
+    <label>Street Address<input required></label>
+    <div class="split" style="grid-template-columns:1fr 1fr">
+      <label>City<input required></label>
+      <label>Postcode<input required></label>
+    </div>
+    <label>Country
+      <select><option>United Kingdom</option></select>
+    </label>
+
+    <button class="btn" type="submit">Place Order</button>
+  </form>
+
+  <aside class="feature">
+    <h2>Order Summary</h2>
+    <table class="table">
+      <tr><th>Item</th><th>Price</th></tr>
+      <tr><td>Wild‑Caught Lobster</td><td>£48.00</td></tr>
+      <tr><td>Jumbo Tiger Prawns</td><td>£24.00</td></tr>
+      <tr><th>Subtotal</th><th>£72.00</th></tr>
+      <tr><td>Shipping</td><td>Free</td></tr>
+      <tr><th>Total</th><th class="price">£72.00</th></tr>
+    </table>
+    <div style="margin-top:10px">
+      <label><input type="radio" name="pay" checked> Credit Card</label><br>
+      <label><input type="radio" name="pay"> PayPal</label>
+    </div>
+  </aside>
+</main>
+
+{% include 'partials/footer.html' %}
+
+</body>
+</html>

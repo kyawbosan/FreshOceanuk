@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Not Found — FreshOcean</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  {% include 'partials/header.html' %}
+  <main class="section container" style="text-align:center;padding:80px 0;">
+    <h1>404</h1>
+    <p class="lead">Oops—looks like that page swam away.</p>
+    <a class="btn" href="{{ url_for('home') }}">Return Home</a>
+  </main>
+  {% include 'partials/footer.html' %}
+</body>
+</html>

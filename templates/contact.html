@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us — FreshOcean</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+
+{% include 'partials/header.html' %}
+
+<header class="hero">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p class="lead">We’d love to hear from you! Fill out the form below and we’ll get back to you promptly.</p>
+  </div>
+</header>
+
+<main class="section container">
+  <form method="POST" action="{{ url_for('send_message') }}">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <h2>Our Office</h2>
+  <p>75 Clare Road, Staines-upon-Thames, TW19 7QP, UK</p>
+  <p>+44 7429 653338</p>
+  <p>info@freshocean.co.uk</p>
+</main>
+
+{% include 'partials/footer.html' %}
+
+</body>
+</html>

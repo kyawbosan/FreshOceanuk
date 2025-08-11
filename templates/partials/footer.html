@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="container" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <img src="{{ url_for('static', filename='assets/logo-teal.png') }}" alt="FreshOcean" style="height:28px;width:28px;">
+        <strong>FreshOcean</strong>
+      </div>
+      <p>Premium seafood • Export &amp; Import (B2B &amp; B2C). Sustainably sourced, quality-assured.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="{{ url_for('about') }}">About</a><br>
+      <a href="{{ url_for('processing') }}">Processing</a><br>
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="{{ url_for('faq') }}">FAQs</a><br>
+      <a href="{{ url_for('contact') }}">Contact</a><br>
+      <a href="{{ url_for('promotions') }}">Special Offers</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>75 Clare Road, Staines-upon-Thames, TW19 7QP, UK</p>
+      <p>+44 7429 653338<br>info@freshocean.co.uk</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">© <span data-year></span> FreshOcean. All rights reserved.</div>
+</footer>

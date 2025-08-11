@@ -1,0 +1,18 @@
+<header class="site-header">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:20px;">
+    <a class="logo" href="{{ url_for('home') }}" style="display:flex;align-items:center;gap:10px;color:#fff;">
+      <img src="{{ url_for('static', filename='assets/logo-teal.png') }}" alt="FreshOcean" style="height:32px;width:32px;">
+      <span>FreshOcean</span>
+    </a>
+    <nav class="site-nav">
+      <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+      <a href="{{ url_for('products') }}" class="{% if request.endpoint == 'products' %}active{% endif %}">Products</a>
+      <a href="{{ url_for('promotions') }}" class="{% if request.endpoint == 'promotions' %}active{% endif %}">Special Offers</a>
+      <a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a>
+      <a href="{{ url_for('processing') }}" class="{% if request.endpoint == 'processing' %}active{% endif %}">Processing</a>
+      <a href="{{ url_for('blog') }}" class="{% if request.endpoint == 'blog' %}active{% endif %}">Blog</a>
+      <a href="{{ url_for('faq') }}" class="{% if request.endpoint == 'faq' %}active{% endif %}">FAQs</a>
+      <a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+    </nav>
+  </div>
+</header>
