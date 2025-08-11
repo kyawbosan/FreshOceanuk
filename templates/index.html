@@ -1,119 +1,136 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FreshOcean — Premium Seafood Export & Import</title>
-<meta name="description" content="FreshOcean supplies premium seafood to wholesale, retail, and foodservice customers. Sustainably sourced, quality assured.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-<script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FreshOcean — Premium Seafood Export & Import</title>
+  <meta name="description" content="FreshOcean supplies premium seafood to wholesale, retail, and foodservice customers. Sustainably sourced, quality assured.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
 </head>
 <body>
 
-<nav>
-  <div class="container nav-inner" role="navigation" aria-label="Primary">
-    <a class="logo" href="{{ url_for('home') }}">
-      <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="FreshOcean logo" />
-      <span>FreshOcean</span>
-    </a>
-    <div class="menu">
-      <a class="active" href="{{ url_for('home') }}">Home</a>
-      <a href="products.html">Products</a>
-      <a href="promotions.html">Special Offers</a>
-      <a href="about.html">About</a>
-      <a href="processing.html">Processing</a>
-      <a href="blog.html">Blog</a>
-      <a href="faq.html">FAQs</a>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-outline" href="newsletter.html" aria-label="Sign up to our newsletter">Newsletter</a>
-    </div>
-  </div>
-</nav>
+  {% include 'partials/header.html' %}
 
-<header class="hero">
-  <div class="container grid">
-    <div>
-      <span class="kicker">Premium Seafood • Thailand → UK</span>
-      <h1>Importer & Exporter of Premium Seafood</h1>
-      <p class="lead">We deliver sustainably sourced, quality-assured seafood to wholesalers, retailers, and foodservice—on time and at peak freshness.</p>
-      <div style="margin-top:18px;">
-        <a class="btn" href="products.html">Shop Now</a>
-        <a class="btn btn-outline" href="promotions.html">View Promotions</a>
+  <!-- ===== HERO SLIDER ===== -->
+  <section>
+    <div class="hero-slider" aria-label="Featured seafood imagery">
+      <button class="hero-arrow hero-prev" aria-label="Previous slide">‹</button>
+      <div class="hero-slides-wrapper">
+        <div class="hero-slide">
+          <img src="{{ url_for('static', filename='assets/hero-lobster.jpeg') }}" alt="Fresh lobster with lemon and herbs">
+        </div>
+        <div class="hero-slide">
+          <img src="{{ url_for('static', filename='assets/hero-king-crab.jpeg') }}" alt="King crab legs on ice">
+        </div>
+        <div class="hero-slide">
+          <img src="{{ url_for('static', filename='assets/hero-shrimp.jpeg') }}" alt="Jumbo shrimp platter">
+        </div>
+        <div class="hero-slide">
+          <img src="{{ url_for('static', filename='assets/hero-salmon.jpeg') }}" alt="Fresh salmon fillets on ice">
+        </div>
+      </div>
+      <button class="hero-arrow hero-next" aria-label="Next slide">›</button>
+
+      <div class="hero-overlay">
+        <span class="kicker" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">
+          Premium Seafood • Thailand → UK
+        </span>
+        <h1 style="margin:6px 0 10px;">Importer &amp; Exporter of Premium Seafood</h1>
+        <p class="lead" style="opacity:.95;margin:0 0 12px;">
+          We deliver sustainably sourced, quality‑assured seafood to wholesalers, retailers, and foodservice—on time and at peak freshness.
+        </p>
+        <div style="margin-top:10px;display:flex;gap:10px;">
+          <a class="btn" href="{{ url_for('products') }}">Shop Now</a>
+          <a class="btn btn-outline" href="{{ url_for('promotions') }}">View Promotions</a>
+        </div>
+      </div>
+      <!-- dots will be injected by app.js -->
+    </div>
+  </section>
+
+  <!-- ===== OUR PRODUCTS (cards) ===== -->
+  <section class="section">
+    <div class="container">
+      <h2>Our Products</h2>
+      <p class="subtle">Hand‑picked selections from trusted, sustainable fisheries.</p>
+
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <img src="{{ url_for('static', filename='assets/king-crab.jpg') }}" alt="King crab">
+          <div class="body">
+            <h3>King Crab</h3>
+            <p class="subtle">Sweet, tender, and wild‑caught.</p>
+            <a class="btn btn-outline" href="{{ url_for('products') }}#crab">View</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="{{ url_for('static', filename='assets/lobster.jpg') }}" alt="Lobster">
+          <div class="body">
+            <h3>Lobster</h3>
+            <p class="subtle">Premium whole lobster and tails.</p>
+            <a class="btn btn-outline" href="{{ url_for('products') }}#lobster">View</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="{{ url_for('static', filename='assets/shrimp.jpg') }}" alt="Shrimp">
+          <div class="body">
+            <h3>Shrimp</h3>
+            <p class="subtle">Perfect for grilling or pasta dishes.</p>
+            <a class="btn btn-outline" href="{{ url_for('products') }}#shrimp">View</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="{{ url_for('static', filename='assets/summer-sale-banner.jpeg') }}" alt="Summer sale seafood banner">
+          <div class="body">
+            <h3>Summer Sale</h3>
+            <p class="subtle">Limited‑time offers for seafood lovers.</p>
+            <a class="btn btn-outline" href="{{ url_for('promotions') }}">View</a>
+          </div>
+        </article>
       </div>
     </div>
-    <img src="{{ url_for('static', filename='assets/hero-lobster.jpeg') }}" alt="Fresh lobster with lemon and herbs">
-  </div>
-</header>
+  </section>
 
-<section class="section">
-  <div class="container">
-    <h2>Our Products</h2>
-    <p class="subtle">Hand-picked selections from trusted, sustainable fisheries.</p>
-    <div class="cards" role="list">
-      <article class="card" role="listitem">
-        <img src="{{ url_for('static', filename='assets/king-crab.jpg') }}" alt="King crab">
-        <div class="body"><h3>King Crab</h3><p class="subtle">Sweet, tender, and wild-caught.</p><a class="btn btn-outline" href="products.html#crab">View</a></div>
-      </article>
-      <article class="card">
-        <img src="{{ url_for('static', filename='assets/lobster.jpg') }}" alt="Lobster">
-        <div class="body"><h3>Lobster</h3><p class="subtle">Premium whole lobster and tails.</p><a class="btn btn-outline" href="products.html#lobster">View</a></div>
-      </article>
-      <article class="card">
-        <img src="{{ url_for('static', filename='assets/shrimp.jpg') }}" alt="Shrimp">
-        <div class="body"><h3>Shrimp</h3><p class="subtle">Perfect for grilling or pasta dishes.</p><a class="btn btn-outline" href="products.html#shrimp">View</a></div>
-      </article>
-      <article class="card">
-        <img src="{{ url_for('static', filename='assets/summer-sale-banner.jpeg') }}" alt="Summer sale seafood banner">
-        <div class="body"><h3>Summer Sale</h3><p class="subtle">Limited-time offers for seafood lovers.</p><a class="btn btn-outline" href="promotions.html">View</a></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background:#fff">
-  <div class="container split">
-    <img src="{{ url_for('static', filename='assets/processing.jpeg') }}" alt="Seafood processing facility">
-    <div>
-      <h2>Quality & Processing</h2>
-      <div class="feature">
-        <ul>
-          <li>Stringent quality checks at intake and before dispatch</li>
-          <li>Filleting, cleaning, freezing/chilling to optimal temperatures</li>
-          <li>Secure, attractive packaging with accurate labelling</li>
-          <li>Trusted logistics partners for fast EU/UK delivery</li>
-        </ul>
+  <!-- ===== PROCESSING / QUALITY ===== -->
+  <section class="section" style="background:#fff">
+    <div class="container split">
+      <img src="{{ url_for('static', filename='assets/processing.jpeg') }}" alt="Seafood processing facility">
+      <div>
+        <h2>Quality &amp; Processing</h2>
+        <div class="feature">
+          <ul>
+            <li>Stringent quality checks at intake and before dispatch</li>
+            <li>Filleting, cleaning, freezing/chilling to optimal temperatures</li>
+            <li>Secure, attractive packaging with accurate labelling</li>
+            <li>Trusted logistics partners for fast EU/UK delivery</li>
+          </ul>
+        </div>
+        <a class="btn" href="{{ url_for('processing') }}">See Our Process</a>
       </div>
-      <a class="btn" href="processing.html">See Our Process</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" style="background:#fff">
-  <div class="container split">
-    <div>
-      <h2>Get in Touch</h2>
-      <p class="subtle">Questions or bulk orders? Our team is here to help.</p>
-      <p class="subtle"><strong>+44 7429 653338</strong><br>info@freshocean.co.uk</p>
-      <a class="btn" href="contact.html">Contact Us</a>
+  <!-- ===== CONTACT / MAP ===== -->
+  <section class="section" style="background:#fff">
+    <div class="container split">
+      <div>
+        <h2>Get in Touch</h2>
+        <p class="subtle">Questions or bulk orders? Our team is here to help.</p>
+        <p class="subtle"><strong>+44 7429 653338</strong><br>info@freshocean.co.uk</p>
+        <a class="btn" href="{{ url_for('contact') }}">Contact Us</a>
+      </div>
+      <img src="{{ url_for('static', filename='assets/map-staines.png') }}" alt="Map showing Staines‑upon‑Thames, UK">
     </div>
-    <img src="{{ url_for('static', filename='assets/map-staines.png') }}" alt="Map showing Staines-upon-Thames, UK">
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="container footer-inner">
-    <div>
-      <div class="logo"><img src="{{ url_for('static', filename='assets/logo.png') }}" alt="">FreshOcean</div>
-      <p class="subtle">Premium seafood • Export & Import (B2B & B2C).</p>
-      <p class="subtle">© <span data-year></span> FreshOcean. All rights reserved.</p>
-    </div>
-    <div><h4>Company</h4><a href="about.html">About</a><br><a href="processing.html">Processing</a><br><a href="privacy.html">Privacy Policy</a></div>
-    <div><h4>Support</h4><a href="faq.html">FAQs</a><br><a href="contact.html">Contact</a><br><a href="promotions.html">Special Offers</a></div>
-    <div><h4>Contact</h4><p class="subtle">75 Clare Road, Staines-upon-Thames, TW19 7QP, UK</p><p class="subtle">+44 7429 653338<br>info@freshocean.co.uk</p></div>
-  </div>
-</footer>
+  {% include 'partials/footer.html' %}
 
 </body>
 </html>
