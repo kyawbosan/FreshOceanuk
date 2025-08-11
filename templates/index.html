@@ -12,11 +12,10 @@
 </head>
 <body>
 
-<!-- Header -->
 <nav>
   <div class="container nav-inner" role="navigation" aria-label="Primary">
     <a class="logo" href="{{ url_for('home') }}">
-      <img src="{{ url_for('static', filename='assets/logo-teal.png') }}" alt="FreshOcean logo" />
+      <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="FreshOcean logo" />
       <span>FreshOcean</span>
     </a>
     <div class="menu">
@@ -33,7 +32,6 @@
   </div>
 </nav>
 
-<!-- Hero -->
 <header class="hero">
   <div class="container grid">
     <div>
@@ -45,11 +43,10 @@
         <a class="btn btn-outline" href="promotions.html">View Promotions</a>
       </div>
     </div>
-    <img src="{{ url_for('static', filename='assets/hero-lobster.jpg') }}" alt="Fresh lobster with lemon and herbs">
+    <img src="{{ url_for('static', filename='assets/hero-lobster.jpeg') }}" alt="Fresh lobster with lemon and herbs">
   </div>
 </header>
 
-<!-- Our Products -->
 <section class="section">
   <div class="container">
     <h2>Our Products</h2>
@@ -68,17 +65,16 @@
         <div class="body"><h3>Shrimp</h3><p class="subtle">Perfect for grilling or pasta dishes.</p><a class="btn btn-outline" href="products.html#shrimp">View</a></div>
       </article>
       <article class="card">
-        <img src="{{ url_for('static', filename='assets/summer-sale-banner.jpg') }}" alt="Summer sale seafood banner">
+        <img src="{{ url_for('static', filename='assets/summer-sale-banner.jpeg') }}" alt="Summer sale seafood banner">
         <div class="body"><h3>Summer Sale</h3><p class="subtle">Limited-time offers for seafood lovers.</p><a class="btn btn-outline" href="promotions.html">View</a></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- Quality & Processing -->
 <section class="section" style="background:#fff">
   <div class="container split">
-    <img src="{{ url_for('static', filename='assets/processing.jpg') }}" alt="Seafood processing facility">
+    <img src="{{ url_for('static', filename='assets/processing.jpeg') }}" alt="Seafood processing facility">
     <div>
       <h2>Quality & Processing</h2>
       <div class="feature">
@@ -94,7 +90,6 @@
   </div>
 </section>
 
-<!-- Contact -->
 <section class="section" style="background:#fff">
   <div class="container split">
     <div>
@@ -107,11 +102,10 @@
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
   <div class="container footer-inner">
     <div>
-      <div class="logo"><img src="{{ url_for('static', filename='assets/logo-teal.png') }}" alt="">FreshOcean</div>
+      <div class="logo"><img src="{{ url_for('static', filename='assets/logo.png') }}" alt="">FreshOcean</div>
       <p class="subtle">Premium seafood • Export & Import (B2B & B2C).</p>
       <p class="subtle">© <span data-year></span> FreshOcean. All rights reserved.</p>
     </div>
