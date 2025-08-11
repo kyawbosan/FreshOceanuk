@@ -20,24 +20,35 @@
 
 <main class="section container">
   <div class="product-grid">
-    {% for product in [
-      {'name':'King Crab','img':'king-crab.jpg','price':'From £36.00/kg','anchor':'crab'},
-      {'name':'Lobster','img':'lobster.jpg','price':'From £48.00/kg','anchor':'lobster'},
-      {'name':'Shrimp','img':'shrimp.jpg','price':'From £15.00/kg','anchor':'shrimp'},
-      {'name':'Salmon','img':'salmon.jpg','price':'From £19.90/kg','anchor':'salmon'},
-      {'name':'Tuna','img':'tuna.jpg','price':'From £24.00/kg','anchor':'tuna'},
-      {'name':'Scallops','img':'scallops.jpg','price':'From £22.00/kg','anchor':'scallops'},
-      {'name':'Mussels','img':'mussels.jpg','price':'From £8.50/kg','anchor':'mussels'}
+
+    {% for p in [
+      {'name':'King Crab','img':'king-crab.jpg','price':'From £36.00 / kg','anchor':'crab','tag':'King Crab'},
+      {'name':'Lobster','img':'lobster.jpg','price':'From £28.00 / kg','anchor':'lobster','tag':'Lobster'},
+      {'name':'Shrimp','img':'shrimp.jpg','price':'From £14.50 / kg','anchor':'shrimp','tag':'Shrimp'},
+      {'name':'Salmon','img':'salmon.jpg','price':'From £19.90 / kg','anchor':'salmon','tag':'Salmon'},
+      {'name':'Tuna','img':'tuna.jpg','price':'From £24.00 / kg','anchor':'tuna','tag':'Tuna'},
+      {'name':'Scallops','img':'scallops.jpg','price':'From £22.00 / kg','anchor':'scallops','tag':'Scallops'},
+      {'name':'Mussels','img':'mussels.jpg','price':'From £8.50 / kg','anchor':'mussels','tag':'Mussels'}
     ] %}
-    <article class="product-card" id="{{ product.anchor }}">
-      <img src="{{ url_for('static', filename='assets/' + product.img) }}" alt="{{ product.name }}">
-      <div class="content">
-        <h3>{{ product.name }}</h3>
-        <p class="price">{{ product.price }}</p>
-        <a class="btn btn-outline" href="#">Order Now</a>
+
+    <article class="product-card" id="{{ p.anchor }}">
+      <div class="p-thumb">
+        <span class="p-tag">{{ p.tag }}</span>
+        <img src="{{ url_for('static', filename='assets/' + p.img) }}" alt="{{ p.name }}">
+        <div class="p-price">{{ p.price }}</div>
+      </div>
+      <div class="p-body">
+        <h3 class="p-title">{{ p.name }}</h3>
+        <p class="p-note subtle">Sustainably sourced • Quality assured</p>
+        <div class="p-actions">
+          <a class="btn btn-outline" href="#{{ p.anchor }}">Details</a>
+          <button class="btn btn-mini" onclick="addToCart({name:'{{ p.name }}'})">Add to cart</button>
+        </div>
       </div>
     </article>
+
     {% endfor %}
+
   </div>
 </main>
 
