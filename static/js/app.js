@@ -189,3 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelector('.nav-toggle')?.addEventListener('click', () => {
   document.querySelector('.mainmenu')?.classList.toggle('show');
 });
+
+// Mobile menu toggle (premium header)
+(() => {
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('primary-menu');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+})();
+
