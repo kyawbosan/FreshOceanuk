@@ -173,3 +173,19 @@ if (slider && wrapper && total > 0) {
     if (e.key === 'ArrowLeft')  { currentSlide = Math.max(currentSlide - 1, 0);       snapToSlide(); resetAuto(); }
   });
 }
+
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const navToggle = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('.menu');
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  }
+});
+
+// mobile nav toggle
+document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+  document.querySelector('.mainmenu')?.classList.toggle('show');
+});

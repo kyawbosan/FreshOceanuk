@@ -1,20 +1,24 @@
-<nav class="site-nav-wrapper">
-  <div class="container nav-inner" style="display:flex;align-items:center;justify-content:space-between;">
-    
-    <!-- Logo -->
-<a class="logo" href="{{ url_for('home') }}">
-  <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="FreshOcean logo">
-  <span>FreshOcean</span>
-</a>
+<nav class="topbar">
+  <div class="container topbar-inner">
+    <div class="left">Premium Seafood • Thailand → UK</div>
+    <div class="right">
+      <a href="mailto:info@freshocean.co.uk">info@freshocean.co.uk</a>
+      <span class="dot">•</span>
+      <a href="tel:+447429653338">+44 7429 653338</a>
+    </div>
+  </div>
+</nav>
 
+<header class="brandbar">
+  <div class="container brandbar-inner">
+    <a class="logo" href="{{ url_for('home') }}">
+      <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="FreshOcean logo">
+      <strong>FreshOcean</strong>
+    </a>
 
-    <!-- Hamburger for mobile -->
-    <button class="nav-toggle" aria-label="Toggle menu">
-      &#9776;
-    </button>
+    <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
 
-    <!-- Navigation Menu -->
-    <div class="menu">
+    <nav class="mainmenu" aria-label="Primary">
       <a href="{{ url_for('home') }}">Home</a>
       <a href="{{ url_for('products') }}">Products</a>
       <a href="{{ url_for('promotions') }}">Special Offers</a>
@@ -23,7 +27,14 @@
       <a href="{{ url_for('blog') }}">Blog</a>
       <a href="{{ url_for('faq') }}">FAQs</a>
       <a href="{{ url_for('contact') }}">Contact</a>
-      <a class="btn btn-outline" href="{{ url_for('newsletter') }}">Newsletter</a>
-    </div>
+      <a class="btn btn-mini" href="{{ url_for('newsletter') }}">Newsletter</a>
+    </nav>
   </div>
-</nav>
+</header>
+
+<div class="promo-ribbon">
+  <div class="container">
+    Save <strong>20%</strong> on seasonal selection · Free delivery over <strong>£100</strong>
+  </div>
+</div>
+

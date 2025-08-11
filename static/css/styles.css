@@ -378,4 +378,56 @@ footer .logo { display: inline-flex; align-items: center; gap: 8px; }
 @media (min-width: 992px) {
   .site-nav-wrapper .logo img, nav .logo img { height: 40px; }
 }
+/* ========== Topbar & Brandbar (sample-style) ========== */
+.topbar {
+  background:#0c3d58; color:#cfe9f2; font-size:13px;
+}
+.topbar-inner { display:flex; justify-content:space-between; align-items:center; padding:8px 0; }
+.topbar a { color:#cfe9f2; text-decoration:none; }
+.topbar .dot { opacity:.6; margin:0 8px; }
+
+.brandbar {
+  background:#0f5c7a; color:#fff; border-bottom:3px solid #0a3e52;
+}
+.brandbar-inner {
+  display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0;
+}
+.brandbar .logo { display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; }
+.brandbar .logo img { height:44px; width:auto; display:block; }
+.brandbar .logo strong { font-size:22px; letter-spacing:.3px; }
+
+.mainmenu { display:flex; align-items:center; gap:20px; }
+.mainmenu a { color:#e9f6fb; padding:6px 8px; border-radius:6px; transition:background .2s, color .2s; }
+.mainmenu a:hover, .mainmenu a[aria-current="page"] { background:rgba(255,255,255,.12); color:#fff; }
+
+.btn-mini { background:#18a2a5; color:#fff !important; padding:6px 10px; border-radius:20px; }
+.btn-mini:hover { background:#12888a; }
+
+/* Mobile menu */
+.nav-toggle { display:none; font-size:26px; color:#fff; background:none; border:none; cursor:pointer; }
+@media (max-width: 900px) {
+  .nav-toggle { display:block; }
+  .mainmenu { position:absolute; top:110px; right:15px; left:15px;
+    background:#0f5c7a; border:1px solid rgba(255,255,255,.12);
+    border-radius:10px; padding:14px; flex-direction:column; display:none; z-index:1000;
+  }
+  .mainmenu.show { display:flex; }
+}
+
+/* Promo ribbon under header */
+.promo-ribbon { background:#eaf6ff; color:#0f5c7a; border-bottom:1px solid #d7eaf8; padding:8px 0; font-size:14px; }
+
+/* ========== Hero image tidy (so big lobster fits nicely) ========== */
+.hero .container { display:grid; grid-template-columns: 1.1fr 1fr; gap:24px; align-items:center; }
+.hero img { width:100%; height:480px; object-fit:cover; border-radius:10px; }
+@media (max-width: 900px) {
+  .hero .container { grid-template-columns:1fr; }
+  .hero img { height:320px; }
+}
+
+/* Product thumbs in cards already sized; ensure consistent */
+.card img, .product-card img { height:220px; object-fit:cover; }
+
+/* Footer logo size harmony */
+footer .logo img { height:32px; }
 
