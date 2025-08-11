@@ -320,3 +320,59 @@ form button:hover {
     padding: 15px;
   }
 }
+
+/* Mobile Navigation */
+.nav-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #17A2A5;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  .menu.active {
+    display: flex;
+  }
+}
+
+/* --- Logo sizing (navbar + footer) --- */
+.site-nav-wrapper .logo,
+nav .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-nav-wrapper .logo img,
+nav .logo img,
+footer .logo img {
+  height: 36px;      /* tweak: 28–48px depending on taste */
+  width: auto;
+  display: block;
+}
+
+footer .logo { display: inline-flex; align-items: center; gap: 8px; }
+
+@media (min-width: 992px) {
+  .site-nav-wrapper .logo img, nav .logo img { height: 40px; }
+}
+
