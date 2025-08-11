@@ -355,8 +355,10 @@ form button:hover {
 }
 
 /* --- Logo sizing (navbar + footer) --- */
+/* Navbar & footer logo sizing */
 .site-nav-wrapper .logo,
-nav .logo {
+nav .logo,
+footer .logo {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -365,10 +367,11 @@ nav .logo {
 .site-nav-wrapper .logo img,
 nav .logo img,
 footer .logo img {
-  height: 36px;      /* tweak: 28–48px depending on taste */
+  height: 40px;      /* adjust 32–48px to taste */
   width: auto;
   display: block;
 }
+
 
 footer .logo { display: inline-flex; align-items: center; gap: 8px; }
 
