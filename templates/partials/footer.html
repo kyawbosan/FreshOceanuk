@@ -1,29 +1,51 @@
-<footer class="site-footer">
-  <div class="container" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;">
-    <div>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-        <img src="{{ url_for('static', filename='assets/logo-teal.png') }}" alt="FreshOcean" style="height:28px;width:28px;">
-        <strong>FreshOcean</strong>
-      </div>
-      <p>Premium seafood • Export &amp; Import (B2B &amp; B2C). Sustainably sourced, quality-assured.</p>
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-grid">
+    <!-- Column 1: Logo + About -->
+    <div class="footer-col">
+      <a class="logo" href="{{ url_for('home') }}" aria-label="FreshOcean — Home">
+        <img src="{{ url_for('static', filename='assets/logo3.jpg') }}" alt="FreshOcean logo">
+      </a>
+      <p>
+        Premium seafood importer & exporter delivering the freshest catch from sustainable sources — Thailand to the UK with quality assured.
+      </p>
     </div>
-    <div>
-      <h4>Company</h4>
-      <a href="{{ url_for('about') }}">About</a><br>
-      <a href="{{ url_for('processing') }}">Processing</a><br>
-      <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('products') }}">Products</a></li>
+        <li><a href="{{ url_for('promotions') }}">Special Offers</a></li>
+        <li><a href="{{ url_for('about') }}">About Us</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
     </div>
-    <div>
-      <h4>Support</h4>
-      <a href="{{ url_for('faq') }}">FAQs</a><br>
-      <a href="{{ url_for('contact') }}">Contact</a><br>
-      <a href="{{ url_for('promotions') }}">Special Offers</a>
+
+    <!-- Column 3: Products -->
+    <div class="footer-col">
+      <h4>Our Products</h4>
+      <ul>
+        <li><a href="{{ url_for('products') }}#crab">King Crab</a></li>
+        <li><a href="{{ url_for('products') }}#lobster">Lobster</a></li>
+        <li><a href="{{ url_for('products') }}#shrimp">Shrimp</a></li>
+        <li><a href="{{ url_for('products') }}#salmon">Salmon</a></li>
+      </ul>
     </div>
-    <div>
-      <h4>Contact</h4>
-      <p>75 Clare Road, Staines-upon-Thames, TW19 7QP, UK</p>
-      <p>+44 7429 653338<br>info@freshocean.co.uk</p>
+
+    <!-- Column 4: Contact -->
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="mailto:info@freshocean.co.uk">info@freshocean.co.uk</a></li>
+        <li><a href="tel:+447429653338">+44 7429 653338</a></li>
+        <li>Staines-upon-Thames, UK</li>
+      </ul>
     </div>
   </div>
-  <div class="container footer-bottom">© <span data-year></span> FreshOcean. All rights reserved.</div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    &copy; {{ current_year }} FreshOcean. All rights reserved.
+  </div>
 </footer>
