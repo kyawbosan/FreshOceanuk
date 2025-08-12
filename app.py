@@ -1,7 +1,30 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from dotenv import load_dotenv
+import os
+import smtplib
+from email.mime.text import MIMEText
+from flask_mail import Mail
+
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', 587))
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+
+mail = Mail(app)
+
+# --- Load env vars ---
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = "super-secret-key"
+app.secret_key = os.getenv("FLASK_SECRET_KEY")
+
+MAIL_SERVER = os.getenv("MAIL_SERVER")
+MAIL_PORT = int(os.getenv("MAIL_PORT", 587))
+MAIL_USERNAME = os.getenv("MAIL_USERNAME")
+MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
+MAIL_RECIPIENT = os.getenv("MAIL_RECIPIENT")
 
 @app.route("/")
 def home():
@@ -41,12 +64,36 @@ def contact():
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
-        print(f"Contact form submitted: {name} - {email} - {message}")
-        flash("Thank you! Your message has been sent.", "success")
+
+        if not name or not email or not message:
+            flash("Please fill in all fields.", "error")
+            return redirect(url_for("contact"))
+
+        try:
+            # Create email
+            subject = f"FreshOcean Contact Form — {name}"
+            body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            msg = MIMEText(body)
+            msg["Subject"] = subject
+            msg["From"] = MAIL_USERNAME
+            msg["To"] = MAIL_RECIPIENT
+
+            # Send email
+            with smtplib.SMTP(MAIL_SERVER, MAIL_PORT) as server:
+                server.starttls()
+                server.login(MAIL_USERNAME, MAIL_PASSWORD)
+                server.send_message(msg)
+
+            flash("Thank you! Your message has been sent successfully.", "success")
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            flash("Oops! There was a problem sending your message. Please try again later.", "error")
+
         return redirect(url_for("contact"))
+
     return render_template("contact.html")
 
-# --- Extra pages you already have ---
+# --- Extra pages ---
 @app.route("/checkout")
 def checkout():
     return render_template("checkout.html")
