@@ -14,11 +14,11 @@
 <header class="brandbar" role="banner" style="background:#0b3a3c; border-bottom:3px solid #072426; box-shadow:0 3px 8px rgba(0,0,0,0.15);">
   <div class="container brandbar-inner">
     <!-- Brand -->
-    <a class="logo" href="{{ url_for('home') }}" aria-label="FreshOcean — Home" style="display:flex;align-items:center;gap:10px;color:white;text-decoration:none;">
-      <img src="{{ url_for('static', filename='assets/logo.png') }}?v=3" alt="FreshOcean logo">
- style="height:48px;width:auto;display:block;background:white;padding:4px;border-radius:6px;filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.4));transition:transform 0.2s ease;">
-      <strong style="font-size:1.3rem;">FreshOcean</strong>
-    </a>
+   <a class="logo" href="{{ url_for('home') }}" aria-label="FreshOcean — Home">
+  <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="FreshOcean logo">
+  <strong>FreshOcean</strong>
+</a>
+
 
     <!-- Mobile toggle -->
     <button class="nav-toggle" aria-label="Toggle menu" aria-controls="primary-menu" aria-expanded="false" style="color:white;">

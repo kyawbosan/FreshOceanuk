@@ -64,16 +64,16 @@ img {
   color: #fff;
   text-decoration: none;
 }
-.brandbar .logo img {
-  height: 60px;
-  width: auto;
-  background: white;
-  padding: 6px;
-  border-radius: 8px;
-  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-  border: 2px solid #0e4a4d;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.brandbar .logo img{
+  height:54px; /* or 44–56px */
+  width:auto;
+  background:#fff;
+  padding:5px;
+  border-radius:8px;
+  border:2px solid #0e4a4d;
+  filter:drop-shadow(2px 2px 4px rgba(0,0,0,.5));
 }
+
 .brandbar .logo img:hover {
   transform: scale(1.08);
   box-shadow: 0 6px 14px rgba(0, 200, 200, 0.4);
