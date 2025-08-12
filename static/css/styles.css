@@ -675,3 +675,81 @@ footer.site-footer .footer-bottom {
   }
 }
 
+.flash-messages {
+  margin: 20px 0;
+}
+
+.flash {
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.flash.success {
+  background: #d1f0e8;
+  color: #0e4a4d;
+  border: 1px solid #0e4a4d;
+}
+
+.flash.error {
+  background: #ffe0e0;
+  color: #7a0e0e;
+  border: 1px solid #a30b0b;
+}
+/* ===== Flash / Alert Messages ===== */
+.flash-messages {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.flash {
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.flash.success {
+  background: #e6f9f0;
+  color: #0f6848;
+  border: 1px solid #b3e6cc;
+}
+
+.flash.error {
+  background: #fdecea;
+  color: #a94442;
+  border: 1px solid #f5c6cb;
+}
+
+.flash.warning {
+  background: #fff8e5;
+  color: #8a6d3b;
+  border: 1px solid #ffeeba;
+}
+
+.flash.info {
+  background: #e7f3fe;
+  color: #31708f;
+  border: 1px solid #b8daff;
+}
+
+/* Flash close button */
+.flash {
+  position: relative;
+}
+.flash .close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: .7;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.flash .close:hover { opacity: 1; transform: scale(1.05); }

@@ -201,3 +201,42 @@ document.querySelector('.nav-toggle')?.addEventListener('click', () => {
   });
 })();
 
+// Auto-hide flash messages after 4 seconds
+// Flash messages: add close buttons + auto-hide
+document.addEventListener("DOMContentLoaded", () => {
+  const flashes = document.querySelectorAll(".flash");
+  flashes.forEach(flash => {
+    // add a close button if not present
+    if (!flash.querySelector(".close")) {
+      const btn = document.createElement("button");
+      btn.className = "close";
+      btn.setAttribute("aria-label", "Dismiss");
+      btn.textContent = "×";
+      btn.addEventListener("click", () => {
+        flash.style.transition = "opacity 0.3s ease";
+        flash.style.opacity = "0";
+        setTimeout(() => flash.remove(), 300);
+      });
+      flash.appendChild(btn);
+    }
+  });
+
+  // auto-hide after 4s (unless user hovers)
+  let hideTimer = setTimeout(hideAll, 4000);
+  function hideAll() {
+    flashes.forEach(f => {
+      f.style.transition = "opacity 0.6s ease";
+      f.style.opacity = "0";
+      setTimeout(() => f.remove(), 600);
+    });
+  }
+  // pause on hover, resume on leave
+  document.querySelector(".flash-messages")?.addEventListener("mouseenter", () => {
+    clearTimeout(hideTimer);
+  });
+  document.querySelector(".flash-messages")?.addEventListener("mouseleave", () => {
+    hideTimer = setTimeout(hideAll, 2000);
+  });
+});
+
+
