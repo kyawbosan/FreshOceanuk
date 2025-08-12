@@ -753,3 +753,15 @@ footer.site-footer .footer-bottom {
   transition: opacity .2s ease, transform .2s ease;
 }
 .flash .close:hover { opacity: 1; transform: scale(1.05); }
+
+/* Wide promo banner */
+.promo-hero {
+  margin: 0;
+}
+.promo-hero img {
+  width: 100%;
+  height: clamp(220px, 34vw, 420px); /* responsive height */
+  object-fit: cover;                 /* clean crop across sizes */
+  display: block;
+  border-bottom: 1px solid #e8eef2;
+}

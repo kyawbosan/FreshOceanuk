@@ -11,46 +11,29 @@
   </div>
 </nav>
 
-<header class="brandbar" role="banner">
+<header class="brandbar" role="banner" style="background:#0b3a3c; border-bottom:3px solid #072426; box-shadow:0 3px 8px rgba(0,0,0,0.15);">
   <div class="container brandbar-inner">
     <!-- Brand -->
-    <a class="logo" href="{{ url_for('home') }}" aria-label="FreshOcean — Home">
-      <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="FreshOcean logo">
-      <strong>FreshOcean</strong>
+    <a class="logo" href="{{ url_for('home') }}" aria-label="FreshOcean — Home" style="display:flex;align-items:center;gap:10px;color:white;text-decoration:none;">
+      <img src="{{ url_for('static', filename='assets/logo3.jpg') }}" alt="FreshOcean logo" style="height:48px;width:auto;display:block;background:white;padding:4px;border-radius:6px;filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.4));transition:transform 0.2s ease;">
+      <strong style="font-size:1.3rem;">FreshOcean</strong>
     </a>
 
     <!-- Mobile toggle -->
-    <button class="nav-toggle" aria-label="Toggle menu" aria-controls="primary-menu" aria-expanded="false">
+    <button class="nav-toggle" aria-label="Toggle menu" aria-controls="primary-menu" aria-expanded="false" style="color:white;">
       &#9776;
     </button>
 
     <!-- Primary nav -->
     <nav id="primary-menu" class="mainmenu" aria-label="Primary">
-      <a href="{{ url_for('home') }}"
-         class="{% if request.path == url_for('home') %}active{% endif %}"
-         {% if request.path == url_for('home') %}aria-current="page"{% endif %}>Home</a>
-
-      <a href="{{ url_for('products') }}"
-         class="{% if request.path.startswith(url_for('products')) %}active{% endif %}">Products</a>
-
-      <a href="{{ url_for('promotions') }}"
-         class="{% if request.path.startswith(url_for('promotions')) %}active{% endif %}">Special Offers</a>
-
-      <a href="{{ url_for('about') }}"
-         class="{% if request.path.startswith(url_for('about')) %}active{% endif %}">About</a>
-
-      <a href="{{ url_for('processing') }}"
-         class="{% if request.path.startswith(url_for('processing')) %}active{% endif %}">Processing</a>
-
-      <a href="{{ url_for('blog') }}"
-         class="{% if request.path.startswith(url_for('blog')) %}active{% endif %}">Blog</a>
-
-      <a href="{{ url_for('faq') }}"
-         class="{% if request.path.startswith(url_for('faq')) %}active{% endif %}">FAQs</a>
-
-      <a href="{{ url_for('contact') }}"
-         class="{% if request.path.startswith(url_for('contact')) %}active{% endif %}">Contact</a>
-
+      <a href="{{ url_for('home') }}" class="{% if request.path == url_for('home') %}active{% endif %}" {% if request.path == url_for('home') %}aria-current="page"{% endif %}>Home</a>
+      <a href="{{ url_for('products') }}" class="{% if request.path.startswith(url_for('products')) %}active{% endif %}">Products</a>
+      <a href="{{ url_for('promotions') }}" class="{% if request.path.startswith(url_for('promotions')) %}active{% endif %}">Special Offers</a>
+      <a href="{{ url_for('about') }}" class="{% if request.path.startswith(url_for('about')) %}active{% endif %}">About</a>
+      <a href="{{ url_for('processing') }}" class="{% if request.path.startswith(url_for('processing')) %}active{% endif %}">Processing</a>
+      <a href="{{ url_for('blog') }}" class="{% if request.path.startswith(url_for('blog')) %}active{% endif %}">Blog</a>
+      <a href="{{ url_for('faq') }}" class="{% if request.path.startswith(url_for('faq')) %}active{% endif %}">FAQs</a>
+      <a href="{{ url_for('contact') }}" class="{% if request.path.startswith(url_for('contact')) %}active{% endif %}">Contact</a>
       <a class="btn btn-mini" href="{{ url_for('newsletter') }}">Newsletter</a>
     </nav>
   </div>
@@ -62,3 +45,12 @@
   </div>
 </div>
 
+<script>
+  // Hover effect for logo
+  document.querySelector('.brandbar .logo img').addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.05)';
+  });
+  document.querySelector('.brandbar .logo img').addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1)';
+  });
+</script>
