@@ -1,22 +1,20 @@
 # app.py
+import os, smtplib, ssl
+from email.mime.text import MIMEText
 from flask import Flask, render_template, request, redirect, url_for, flash
 from dotenv import load_dotenv
-import os
-import smtplib
-from email.mime.text import MIMEText
 
 # ---------- load environment ----------
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "change-this")
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "change-me")
 
-# Mail settings from environment (Zoho/Gmail/etc.)
-MAIL_SERVER   = os.getenv("MAIL_SERVER", "smtp.zoho.eu")
-MAIL_PORT     = int(os.getenv("MAIL_PORT", "587"))
-MAIL_USERNAME = os.getenv("MAIL_USERNAME")         # e.g. info@freshocean.co.uk
-MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")         # app‑specific password
-MAIL_RECIPIENT= os.getenv("MAIL_RECIPIENT", MAIL_USERNAME)  # default to self
+MAIL_SERVER    = os.getenv("MAIL_SERVER")          # e.g. smtp.zoho.eu
+MAIL_PORT      = int(os.getenv("MAIL_PORT", "587"))# 587 for STARTTLS
+MAIL_USERNAME  = os.getenv("MAIL_USERNAME")        # info@freshocean.co.uk (Zoho mailbox)
+MAIL_PASSWORD  = os.getenv("MAIL_PASSWORD")        # Zoho app password
+MAIL_RECIPIENT = os.getenv("MAIL_RECIPIENT", MAIL_USERNAME)  # where you want to receive
 
 # ---------- helpers ----------
 def send_email(subject: str, body: str) -> bool:
@@ -80,18 +78,34 @@ def contact():
             flash("Please fill in all fields.", "error")
             return redirect(url_for("contact"))
 
+        # Build the email
         subject = f"FreshOcean Contact — {name}"
-        body    = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        msg = MIMEText(body, "plain", "utf-8")
+        msg["Subject"] = subject
+        msg["From"] = MAIL_USERNAME            # must be your authenticated mailbox
+        msg["To"] = MAIL_RECIPIENT
+        msg["Reply-To"] = email                # replies go to the customer
 
-        if send_email(subject, body):
+        # Send with STARTTLS
+        try:
+            context = ssl.create_default_context()
+            with smtplib.SMTP(MAIL_SERVER, MAIL_PORT, timeout=20) as server:
+                server.ehlo()
+                server.starttls(context=context)
+                server.ehlo()
+                server.login(MAIL_USERNAME, MAIL_PASSWORD)
+                server.sendmail(MAIL_USERNAME, [MAIL_RECIPIENT], msg.as_string())
+
             flash("Thank you! Your message has been sent successfully.", "success")
-        else:
+        except Exception as e:
+            # This prints to your Render logs for debugging
+            print(f"[SMTP ERROR] {type(e).__name__}: {e}")
             flash("Oops! There was a problem sending your message. Please try again later.", "error")
 
         return redirect(url_for("contact"))
 
     return render_template("contact.html")
-
 # Extras
 @app.route("/checkout")
 def checkout():
