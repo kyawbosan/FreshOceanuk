@@ -239,4 +239,112 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// ----- Products: filters + pagination + per-page -----
+(function () {
+  const grid = document.querySelector('.product-grid');
+  if (!grid) return;
 
+  const allCards = Array.from(grid.querySelectorAll('.product-card'));
+  const chips = Array.from(document.querySelectorAll('.catalog-filters .chip'));
+  const prevBtns = document.querySelectorAll('[data-page-prev]');
+  const nextBtns = document.querySelectorAll('[data-page-next]');
+  const statusEls = document.querySelectorAll('[data-page-status]');
+  const perPageSelects = document.querySelectorAll('[data-per-page]');
+
+  let activeCat = 'all';
+  let filtered = allCards.slice();
+
+  // default per page by breakpoint (can be overridden by selector)
+  function defaultPerPage() {
+    if (window.matchMedia('(min-width: 1024px)').matches) return 9;
+    if (window.matchMedia('(min-width: 640px)').matches) return 6;
+    return 4;
+  }
+
+  let perPage = defaultPerPage();
+  // initialize UI selects
+  perPageSelects.forEach(sel => sel.value = String(perPage));
+
+  let page = 1;
+  let total = 1;
+
+  function calcTotal() {
+    total = Math.max(1, Math.ceil(filtered.length / perPage));
+  }
+
+  function applyFilter(cat) {
+    activeCat = cat;
+    filtered = (cat === 'all') ? allCards.slice() : allCards.filter(c => c.dataset.cat === cat);
+    calcTotal();
+    page = 1;
+    render();
+  }
+
+  function render() {
+    allCards.forEach(c => c.style.display = 'none');
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    filtered.slice(start, end).forEach(c => c.style.display = 'block');
+
+    statusEls.forEach(s => s.textContent = `Page ${page} of ${total} · ${activeCat === 'all' ? 'All items' : activeCat}`);
+
+    prevBtns.forEach(b => b.disabled = (page === 1));
+    nextBtns.forEach(b => b.disabled = (page === total));
+
+    // scroll back to grid top
+    const y = grid.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  function goto(delta) {
+    page = Math.min(total, Math.max(1, page + delta));
+    render();
+  }
+
+  // Sync per-page selects
+  function setPerPageFrom(valueStr) {
+    const v = parseInt(valueStr, 10);
+    if (!Number.isFinite(v) || v <= 0) return;
+    perPage = v;
+    perPageSelects.forEach(sel => { if (sel.value !== String(v)) sel.value = String(v); });
+    calcTotal();
+    page = Math.min(page, total);
+    render();
+  }
+
+  perPageSelects.forEach(sel => {
+    sel.addEventListener('change', e => setPerPageFrom(e.target.value));
+  });
+
+  // Filter chips
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.toggle('active', c === chip));
+      applyFilter(chip.dataset.filter);
+    });
+  });
+
+  // Pagination
+  prevBtns.forEach(b => b.addEventListener('click', () => goto(-1)));
+  nextBtns.forEach(b => b.addEventListener('click', () => goto(1)));
+
+  // Recalculate default perPage on resize only if user hasn't chosen a custom value
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // If both selects still match the responsive default, update to new default
+      const currentDefault = defaultPerPage();
+      const allMatchDefault = Array.from(perPageSelects).every(sel => Number(sel.value) === perPage);
+      if (allMatchDefault && perPage !== currentDefault) {
+        setPerPageFrom(String(currentDefault));
+      } else {
+        // just re-render to keep layout tidy
+        render();
+      }
+    }, 150);
+  });
+
+  // Init
+  applyFilter('all');
+})();
